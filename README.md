@@ -18,7 +18,7 @@ docker build -t decoder-pypy .
 docker run -p 8888:8888 decoder-pypy
 ```
 
-**Option 3, git download the script and run it from terminal:
+**Option 3, git download the script and run it from terminal:**
 *The python script runs from terminal*
 ```
 git clone https://github.com/DanielTromp/Cryptarithm-Solver.git
