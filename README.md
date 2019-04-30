@@ -1,5 +1,7 @@
 # Cryptarithm-Solver
 Cryptarithm Solver for resolving cryptopuzzles
+Performance python 100,000 calculations per second
+Performance pypy3  250,000 calculations per second
 
 ## Running the decoder with docker
 
