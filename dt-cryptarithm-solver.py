@@ -1,143 +1,45 @@
+# python3 dt-cryptarithm-solver.py
+# pypy3 dt-cryptarithm-solver.py
 import random
 import time
-import numpy as np
 
-#GCAG-GEH=GFKA
-#DCC-GKD=HCJ
-#JDAK-JAB=JECD
-#GCAG+DCC=JDAK
-#GEH+GKD=JAB
-#GFKA+HCJ=JECD
+def getNumber(i):
+	x = []
+	for w in letterinput[i]:
+		x.append(str(letternumber[w]))
+	return int(''.join(map(str, x)))
 
-reeks1 = "G"
-reeks2 = "CGCH"
-reeks3 = "BAJJ"
-reeks4 = "KCKC"
-reeks5 = "F"
-reeks6 = "KCJB"
-reeks7 = "KCKD"
-reeks8 = "ACAH"
-reeks9 = "EGBK"
-
+letterinput = ['G', 'CGCH', 'BAJJ', 'KCKC', 'F', 'KCJB', 'KCKD', 'ACAH', 'EGBK']
 letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'K']
-#letters = list(set(reeks1+reeks2+reeks3+reeks4+reeks5+reeks6+reeks7+reeks8+reeks9))
-#letters.sort()
-print(letters)
-
+numbers = list(range(10))
 check = False
-count = 0
+c = 0
+uniqrandom = []
 start = time.time()
 while check is False:
-	count += 1
-	cijfers = np.arange(10)
-	np.random.shuffle(cijfers)
-	#print(cijfers)
-	r1 = []
-	for w in reeks1:
-		for (l, c) in zip(letters, cijfers):
-			if w == l:
-				r1.append(c)
-	r1 = ''.join(map(str, r1))
-	#print(r1)
-
-	r2 = []
-	for w in reeks2:
-		for (l, c) in zip(letters, cijfers):
-			if w == l:
-				r2.append(c)
-	r2 = ''.join(map(str, r2))
-	#print(r2)
-
-	r3 = []
-	for w in reeks3:
-		for (l, c) in zip(letters, cijfers):
-			if w == l:
-				r3.append(c)
-	r3 = ''.join(map(str, r3))
-	#print(r3)
-
-	r4 = []
-	for w in reeks4:
-		for (l, c) in zip(letters, cijfers):
-			if w == l:
-				r4.append(c)
-	r4 = ''.join(map(str, r4))
-	#print(r1)
-
-	r5 = []
-	for w in reeks5:
-		for (l, c) in zip(letters, cijfers):
-			if w == l:
-				r5.append(c)
-	r5 = ''.join(map(str, r5))
-	#print(r5)
-
-	r6 = []
-	for w in reeks6:
-		for (l, c) in zip(letters, cijfers):
-			if w == l:
-				r6.append(c)
-	r6 = ''.join(map(str, r6))
-	#print(r6)
-
-	r7 = []
-	for w in reeks7:
-		for (l, c) in zip(letters, cijfers):
-			if w == l:
-				r7.append(c)
-	r7 = ''.join(map(str, r7))
-	#print(r1)
-
-	r8 = []
-	for w in reeks8:
-		for (l, c) in zip(letters, cijfers):
-			if w == l:
-				r8.append(c)
-	r8 = ''.join(map(str, r8))
-	#print(r8)
-
-	r9 = []
-	for w in reeks9:
-		for (l, c) in zip(letters, cijfers):
-			if w == l:
-				r9.append(c)
-	r9 = ''.join(map(str, r9))
-	#print(r9)
-	#print(reeks1 + "  +  " + reeks4  + " = "  + reeks7)
-	#print(r1     + "  +  " + r4      + " = "  + r7)
-	if (int(r1)+int(r4)) == int(r7):
-		#print(reeks1 + "  +  " + reeks4  + " = "  + reeks7)
-		#print(r1     + "  +  " + r4      + " = "  + r7)
-		if (int(r2)*int(r5)) == int(r8):
-			print(reeks1 + "  +  " + reeks4  + " = "  + reeks7)
-			print(r1     + "  +  " + r4      + " = "  + r7)
-			print(reeks2 + "  x  " + reeks5  + " = "  + reeks8)
-			print(r2     + "  x  " + r5      + " = "  + r8)
-			print(" ")
-			print(count)
+	random.shuffle(numbers)
+	letternumber = dict(zip(letters, numbers))
+	#uniqrandom.append(''.join(map(str, numbers)))
+	c += 1
+	if int(getNumber(0))+int(getNumber(3)) == int(getNumber(6)):
+		if int(getNumber(1))*int(getNumber(4)) == int(getNumber(7)):
 			end = time.time()
-			cps = float(count/(end - start))
-			print("{0:.2f} calulations per second".format(cps))
-			print(" ")
-			if (int(r3)-int(r6)) == int(r9):
-				print(reeks1 + "  +  " + reeks4  + " = "  + reeks7)
-				print(r1     + "  +  " + r4      + " = "  + r7)
-				print(reeks2 + "  x  " + reeks5  + " = "  + reeks8)
-				print(r2     + "  x  " + r5      + " = "  + r8)
-				print(reeks3 + "  -  " + reeks6  + " = "  + reeks9)
-				print(r3     + "  -  " + r6      + " = "  + r9)
+			cps = float(c/(end - start))
+			print("Calulations: {:,} @{:,}/second".format(c, int(cps)))
+			if int(getNumber(2))-int(getNumber(5)) == int(getNumber(8)):
 				print(" ")
-				print(count)
-				print(letters)
-				print(cijfers)
+				print(letterinput[0] + "     +  " + letterinput[3] + " = "  + letterinput[6])
+				print(str(getNumber(0)) + "     +  " + str(getNumber(3)) + " = " + str(getNumber(6)))
+				print(letterinput[1] + "  x     " + letterinput[4] + " = "  + letterinput[7])
+				print(str(getNumber(1)) + "  x     " + str(getNumber(4)) + " = " + str(getNumber(7)))
+				print(letterinput[2] + "  -  " + letterinput[5] + " = "  + letterinput[8])
+				print(str(getNumber(2)) + "  -  " + str(getNumber(5)) + " = "  + str(getNumber(8)))
+				print(" ")
+				print("Calculations total : {:,}".format(int(c)))
+				#print("Calculations uniq  : {:,}".format(int(len(set(uniqrandom)))))
+				print("Calculations/second: {:,}".format(int(cps)))
+				print("Total time in sec. : {0:.2f}".format(float(end - start)))
+				print(" ")
+				print(letternumber)
+				print(" ")
 				check = True
-
-
-"""
-print(reeks1 + " -  "  + reeks2 + " = "  + reeks3)
-print(r1     + " -  "  + r2     + " = "  + r3)
-print(reeks4 + "  -  " + reeks5 + " =  " + reeks6)
-print(r4     + "  -  " + r5     + " =  " + r6)
-print(reeks7 + "  -  " + reeks8 + " = "  + reeks9)
-print(r7     + "  -  " + r8     + " = "  + r9)
-"""
